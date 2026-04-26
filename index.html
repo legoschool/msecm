@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>엠에스이씨엠 — 당신의 모든 기록을 담는 공간</title>
+  <meta name="description" content="(주)엠에스이씨엠 MSECM. 독서 사업 · AI 디지털 사업 · 리더십과 역량 강화 — 사람과 미래를 잇는 교육 그룹." />
+  <meta property="og:title" content="엠에스이씨엠 — 당신의 모든 기록을 담는 공간" />
+  <meta property="og:image" content="assets/logo.png" />
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="scripts/reveal.js"></script>
+</head>
+<body>
+
+  <!-- ────────────────────────  HEADER (frosted)  ──────────────────────── -->
+  <div class="sub-nav">
+    <div class="sub-nav__inner">
+      <a class="sub-nav__brand" href="#" data-scroll-top aria-label="엠에스이씨엠 홈">
+        <img src="assets/logo.png" alt="MSECM" />
+      </a>
+      <ul class="sub-nav__links">
+        <li><a href="#about">소개</a></li>
+        <li><a href="#business">사업영역</a></li>
+        <li><a href="#digital">AI · 디지털</a></li>
+        <li><a href="#projects">최근 프로젝트</a></li>
+        <li><a href="#news">소식</a></li>
+      </ul>
+      <a class="pill pill--primary pill--sm" href="#contact">문의하기</a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ────────────  HERO TILE — LIGHT  ──────────── -->
+    <section class="tile tile--light tile--hero" id="hero">
+      <div class="tile__stack" data-reveal data-reveal-stagger>
+        <p class="tile__eyebrow"><span class="nowrap">공공과 민간,</span> <span class="nowrap">현재와 미래,</span> <span class="nowrap">인간과 인간다움을</span> <span class="nowrap">연결하는</span></p>
+        <h1 class="visually-hidden">주식회사 MSECM</h1>
+
+        <figure class="hero-visual">
+          <img src="assets/hero-visual.png"
+               alt="주식회사 MSECM — 공공과 민간, 사람과 도시를 잇는 교육 그룹"
+               width="1254" height="1254"
+               loading="eager" decoding="async" />
+        </figure>
+
+        <!-- Hero stats — verified facts from the blog only. Numbers
+             count up on viewport entry; replace count-to attributes with
+             real metrics once supplied. -->
+        <dl class="hero-stats" aria-label="MSECM 핵심 지표">
+          <div class="hero-stats__item" data-reveal>
+            <dt class="hero-stats__value">
+              <span class="hero-stats__num" data-count-to="2018">0</span>
+            </dt>
+            <dd class="hero-stats__label">설립 연도</dd>
+          </div>
+          <div class="hero-stats__item" data-reveal>
+            <dt class="hero-stats__value">
+              <span class="hero-stats__num" data-count-to="24">0</span><span class="hero-stats__plus">+</span>
+            </dt>
+            <dd class="hero-stats__label">사업·프로젝트</dd>
+          </div>
+          <div class="hero-stats__item" data-reveal>
+            <dt class="hero-stats__value">
+              <span class="hero-stats__num" data-count-to="4">0</span>
+            </dt>
+            <dd class="hero-stats__label">브랜드</dd>
+          </div>
+          <div class="hero-stats__item" data-reveal>
+            <dt class="hero-stats__value">
+              <span class="hero-stats__num" data-count-to="2025">0</span>
+            </dt>
+            <dd class="hero-stats__label">벤처기업 선정</dd>
+          </div>
+        </dl>
+
+        <div class="tile__actions">
+          <a class="pill pill--primary" href="#business">사업영역 보기</a>
+          <a class="pill pill--ghost" href="#contact">제안·견적 문의</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────  ABOUT TILE — DARK  ──────────── -->
+    <section class="tile tile--dark" id="about">
+      <div class="tile__stack tile__stack--narrow" data-reveal data-reveal-stagger>
+        <p class="tile__eyebrow tile__eyebrow--on-dark">2025 · 벤처기업 선정</p>
+        <h2 class="tile__headline">
+          <span class="nowrap">신뢰로 쌓아 온 7년,</span><br />
+          <span class="nowrap">이제는 검증된 기술기업입니다.</span>
+        </h2>
+        <p class="tile__lede tile__lede--on-dark">
+          (주)엠에스이씨엠은 <span class="nowrap">2025년 벤처기업으로</span> <span class="nowrap">공식 선정되었습니다.</span><br />
+          독서 · <span class="nowrap">AI 디지털</span> · <span class="nowrap">리더십과 역량 강화</span> — <span class="nowrap">세 갈래로 단단하게.</span>
+        </p>
+        <div class="tile__actions">
+          <a class="pill pill--primary" href="#business">우리가 하는 일</a>
+          <a class="pill pill--ghost-on-dark" href="https://blog.naver.com/ms_ecm/224118324405" target="_blank" rel="noopener">선정 소식 →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────  BUSINESS GRID — LIGHT (PARCHMENT)  ────────────
+         3대 사업으로 단순화: 독서 / AI 디지털 / 리더십·역량 강화 -->
+    <section class="tile tile--parchment" id="business">
+      <div class="container">
+        <header class="section-head" data-reveal data-reveal-stagger>
+          <h2 class="section-head__title">사업영역</h2>
+          <p class="section-head__lede">
+            <span class="nowrap">세 갈래의 일,</span> <span class="nowrap">하나의 방향.</span>
+          </p>
+        </header>
+
+        <div class="grid grid--3" data-reveal>
+          <article class="utility-card">
+            <div class="utility-card__icon utility-card__icon--blue">01</div>
+            <h3 class="utility-card__title">독서 사업</h3>
+            <p class="utility-card__text">
+              직장인·학부모·학생의 일상에 책을 들이는 일.
+              도서 큐레이션과 읽기 루틴 설계, 그리고 곧 출시될 자체 독서 앱.
+            </p>
+            <a class="utility-card__link" href="#projects">사례 보기 →</a>
+          </article>
+
+          <article class="utility-card">
+            <div class="utility-card__icon utility-card__icon--blue">02</div>
+            <h3 class="utility-card__title">AI · 디지털 사업</h3>
+            <p class="utility-card__text">
+              경상남도교육청 미래교육원 운영을 토대로, 원격 연수와 운영을 하나로 묶는 통합 학습 플랫폼과 AI 챗봇 지식 기반을 만듭니다.
+            </p>
+            <a class="utility-card__link" href="#digital">비전 보기 →</a>
+          </article>
+
+          <article class="utility-card">
+            <div class="utility-card__icon utility-card__icon--blue">03</div>
+            <h3 class="utility-card__title">리더십 · 역량 강화</h3>
+            <p class="utility-card__text">
+              공무원·공공기관·기업 임직원 워크숍부터 이순신리더십 국제센터 운영까지 — 사람의 성장을 설계합니다.
+            </p>
+            <a class="utility-card__link" href="#projects">사례 보기 →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────  AI · DIGITAL VISION TILE — DARK  ──────────── -->
+    <section class="tile tile--dark tile--dark-2" id="digital">
+      <div class="tile__stack" data-reveal data-reveal-stagger>
+        <p class="tile__eyebrow tile__eyebrow--on-dark">AI · 디지털 사업</p>
+        <h2 class="tile__headline">
+          <span class="nowrap">데이터로 짓고,</span><br /><span class="nowrap">AI로 잇는 학습.</span>
+        </h2>
+        <p class="tile__lede tile__lede--on-dark">
+          <span class="nowrap">원격 연수와 운영 시스템을 하나로 통합한</span> <span class="nowrap">차세대 학습 플랫폼,</span><br />
+          <span class="nowrap">흩어진 자료를 자산화한</span> <span class="nowrap">AI 챗봇 지식 기반</span> — <span class="nowrap">교육의 다음 단계를 설계합니다.</span>
+        </p>
+
+        <ul class="vision-points" aria-label="AI 디지털 핵심 과제">
+          <li class="vision-points__item">
+            <span class="vision-points__num">01</span>
+            <span class="vision-points__text"><strong>통합 학습 플랫폼</strong> — 접수·수강·자료 제출·확인까지 한 흐름</span>
+          </li>
+          <li class="vision-points__item">
+            <span class="vision-points__num">02</span>
+            <span class="vision-points__text"><strong>콘텐츠 자산화</strong> — 미래교육원 자료의 디지털 전환과 30분 개념 강의 라이브러리</span>
+          </li>
+          <li class="vision-points__item">
+            <span class="vision-points__num">03</span>
+            <span class="vision-points__text"><strong>AI 챗봇 지식 기반</strong> — 사업별 자료를 클라우드에 모아 챗봇과 자동화의 토대로</span>
+          </li>
+        </ul>
+
+        <div class="tile__actions">
+          <a class="pill pill--primary" href="#contact">함께 만들기</a>
+          <a class="pill pill--ghost-on-dark" href="#projects">진행 사례 →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────  RECENT PROJECTS GALLERY — PARCHMENT  ──────────── -->
+    <section class="tile tile--parchment" id="projects">
+      <div class="container">
+        <header class="section-head" data-reveal data-reveal-stagger>
+          <h2 class="section-head__title">최근 프로젝트</h2>
+          <p class="section-head__lede">
+            현장에서, 사람들과 함께 만들어 온 기록.
+          </p>
+        </header>
+
+        <div class="grid grid--3">
+          <!-- Project cards filled below by data -->
+          <a class="project-card" data-reveal href="https://blog.naver.com/ms_ecm/224254129410" target="_blank" rel="noopener">
+            <figure class="project-card__media"><img src="assets/posts/post_01.jpg" alt="" loading="lazy" /></figure>
+            <div class="project-card__body">
+              <p class="project-card__cat">사업·프로젝트</p>
+              <h3 class="project-card__title">아이와 가기 좋은 의령 여행, 경남교육청 미래교육원</h3>
+              <p class="project-card__date">2026.04.16</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-reveal href="https://blog.naver.com/ms_ecm/224239577907" target="_blank" rel="noopener">
+            <figure class="project-card__media"><img src="assets/posts/post_02.jpg" alt="" loading="lazy" /></figure>
+            <div class="project-card__body">
+              <p class="project-card__cat">사업·프로젝트</p>
+              <h3 class="project-card__title">2026년도 경상남도교육청 미래교육원 주말 체험 안내</h3>
+              <p class="project-card__date">2026.04.03</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-reveal href="https://blog.naver.com/ms_ecm/224135117184" target="_blank" rel="noopener">
+            <figure class="project-card__media"><img src="assets/posts/post_06.jpg" alt="" loading="lazy" /></figure>
+            <div class="project-card__body">
+              <p class="project-card__cat">행사·박람회</p>
+              <h3 class="project-card__title">2025년 남해군 미래진로페스티벌</h3>
+              <p class="project-card__date">2026.01.05</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-reveal href="https://blog.naver.com/ms_ecm/224121180670" target="_blank" rel="noopener">
+            <figure class="project-card__media"><img src="assets/posts/post_10.jpg" alt="" loading="lazy" /></figure>
+            <div class="project-card__body">
+              <p class="project-card__cat">워크숍</p>
+              <h3 class="project-card__title">2025 거창군 주민자치회 역량강화 워크숍</h3>
+              <p class="project-card__date">2025.12.24</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-reveal href="https://blog.naver.com/ms_ecm/224121122840" target="_blank" rel="noopener">
+            <figure class="project-card__media"><img src="assets/posts/post_11.jpg" alt="" loading="lazy" /></figure>
+            <div class="project-card__body">
+              <p class="project-card__cat">행사·박람회</p>
+              <h3 class="project-card__title">2025 의령 공동학교 성과보고회</h3>
+              <p class="project-card__date">2025.12.24</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-reveal href="https://blog.naver.com/ms_ecm/224111872100" target="_blank" rel="noopener">
+            <figure class="project-card__media"><img src="assets/posts/post_13.jpg" alt="" loading="lazy" /></figure>
+            <div class="project-card__body">
+              <p class="project-card__cat">사업·프로젝트</p>
+              <h3 class="project-card__title">경상남도 탄소중립·녹색성장 인식교육</h3>
+              <p class="project-card__date">2025.12.16</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-reveal href="https://blog.naver.com/ms_ecm/224111669261" target="_blank" rel="noopener">
+            <figure class="project-card__media"><img src="assets/posts/post_14.jpg" alt="" loading="lazy" /></figure>
+            <div class="project-card__body">
+              <p class="project-card__cat">워크숍</p>
+              <h3 class="project-card__title">2025 진주시시설관리공단 임직원 힐링 워크숍</h3>
+              <p class="project-card__date">2025.12.16</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-reveal href="https://blog.naver.com/ms_ecm/224110159519" target="_blank" rel="noopener">
+            <figure class="project-card__media"><img src="assets/posts/post_15.jpg" alt="" loading="lazy" /></figure>
+            <div class="project-card__body">
+              <p class="project-card__cat">사업·프로젝트</p>
+              <h3 class="project-card__title">양산시탄소중립센터 시민 포럼</h3>
+              <p class="project-card__date">2025.12.15</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-reveal href="https://blog.naver.com/ms_ecm/223898147611" target="_blank" rel="noopener">
+            <figure class="project-card__media"><img src="assets/posts/post_33.jpg" alt="" loading="lazy" /></figure>
+            <div class="project-card__body">
+              <p class="project-card__cat">이순신리더십 국제센터</p>
+              <h3 class="project-card__title">2025 진해 군항제 홍보 부스 운영</h3>
+              <p class="project-card__date">2025.03</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="section-foot">
+          <a class="pill pill--primary" href="https://blog.naver.com/ms_ecm" target="_blank" rel="noopener">전체 프로젝트 보기 →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────  NEWS — LIGHT  ──────────── -->
+    <section class="tile tile--light" id="news">
+      <div class="container">
+        <header class="section-head section-head--left" data-reveal data-reveal-stagger>
+          <h2 class="section-head__title">회사 소식</h2>
+          <p class="section-head__lede">새로운 도전, 그리고 함께할 분을 찾습니다.</p>
+        </header>
+
+        <div class="grid grid--2">
+          <a class="news-card" data-reveal href="https://blog.naver.com/ms_ecm/224118324405" target="_blank" rel="noopener">
+            <figure class="news-card__media"><img src="assets/posts/post_12.jpg" alt="" loading="lazy" /></figure>
+            <div class="news-card__body">
+              <p class="news-card__cat">회사소식</p>
+              <h3 class="news-card__title">(주) 엠에스이씨엠, 2025 벤처기업 선정</h3>
+              <p class="news-card__text">기술과 신뢰로 인정받은 한 해. 더 큰 책임으로 응답하겠습니다.</p>
+            </div>
+          </a>
+
+          <a class="news-card" data-reveal href="https://blog.naver.com/ms_ecm/224178712526" target="_blank" rel="noopener">
+            <figure class="news-card__media"><img src="assets/posts/post_05.jpg" alt="" loading="lazy" /></figure>
+            <div class="news-card__body">
+              <p class="news-card__cat">회사소식</p>
+              <h3 class="news-card__title">2026 엠에스이씨엠 회사 소개서</h3>
+              <p class="news-card__text">한눈에 보는 우리의 사업 영역과 성과.</p>
+            </div>
+          </a>
+
+          <a class="news-card" data-reveal href="https://blog.naver.com/ms_ecm/224230295740" target="_blank" rel="noopener">
+            <figure class="news-card__media"><img src="assets/posts/post_03.jpg" alt="" loading="lazy" /></figure>
+            <div class="news-card__body">
+              <p class="news-card__cat">채용공고 · 마감</p>
+              <h3 class="news-card__title">미래교육원 주말 전시·체험 안내 인력 모집</h3>
+              <p class="news-card__text">2026학년도 주말 운영 인력. (마감)</p>
+            </div>
+          </a>
+
+          <a class="news-card" data-reveal href="https://blog.naver.com/ms_ecm/224131287110" target="_blank" rel="noopener">
+            <figure class="news-card__media"><img src="assets/posts/post_07.jpg" alt="" loading="lazy" /></figure>
+            <div class="news-card__body">
+              <p class="news-card__cat">회사소식</p>
+              <h3 class="news-card__title">2026, MSECM은 약속합니다</h3>
+              <p class="news-card__text">붉은 말의 해, 더 멀리 더 단단하게.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────  CTA — DARK  ──────────── -->
+    <section class="tile tile--dark tile--dark-3" id="contact">
+      <div class="tile__stack tile__stack--narrow" data-reveal data-reveal-stagger>
+        <h2 class="tile__headline">
+          함께 만들어요.
+        </h2>
+        <p class="tile__lede tile__lede--on-dark">
+          교육·행사·워크숍·통신교육 — <span class="nowrap">어떤 규모의 프로젝트든</span> <span class="nowrap">편하게 문의 주세요.</span>
+        </p>
+        <div class="tile__actions">
+          <a class="pill pill--primary" href="mailto:msecm@msecm.co.kr">메일로 문의</a>
+          <a class="pill pill--ghost-on-dark" href="https://blog.naver.com/ms_ecm" target="_blank" rel="noopener">블로그 방문 →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ────────────────────────  FOOTER  ──────────────────────── -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__cols">
+        <section class="footer__col">
+          <h4>회사</h4>
+          <ul>
+            <li><a href="#about">MSECM 소개</a></li>
+            <li><a href="#news">회사 소식</a></li>
+            <li><a href="#news">채용 정보</a></li>
+          </ul>
+        </section>
+        <section class="footer__col">
+          <h4>사업영역</h4>
+          <ul>
+            <li><a href="#business">독서 사업</a></li>
+            <li><a href="#digital">AI · 디지털 사업</a></li>
+            <li><a href="#business">리더십 · 역량 강화</a></li>
+          </ul>
+        </section>
+        <section class="footer__col">
+          <h4>프로젝트</h4>
+          <ul>
+            <li><a href="#projects">최근 프로젝트</a></li>
+            <li><a href="https://blog.naver.com/ms_ecm" target="_blank" rel="noopener">블로그 전체</a></li>
+          </ul>
+        </section>
+        <section class="footer__col">
+          <h4>문의</h4>
+          <ul>
+            <li><a href="tel:055-715-8853">055-715-8853</a></li>
+            <li><a href="mailto:msecm@msecm.co.kr">msecm@msecm.co.kr</a></li>
+            <li><a href="https://blog.naver.com/ms_ecm" target="_blank" rel="noopener">Naver Blog</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="footer__legal">
+        <p>(주) 엠에스이씨엠 · MSECM Co., Ltd.</p>
+        <p class="footer__fineprint">
+          본 페이지는 <a href="https://blog.naver.com/ms_ecm" target="_blank" rel="noopener">blog.naver.com/ms_ecm</a> 의 공개 콘텐츠를 바탕으로 제작된 디자인 초안입니다.
+          이미지·문구의 저작권은 (주)엠에스이씨엠에 있습니다.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

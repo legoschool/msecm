@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# 작업용 캐시 (블로그 RSS·HTML·posts.json 등 — 산출물에 불필요)
+raw/
+
+# 미리보기용 임시 스크린샷
+preview-*.png
+preview-*.jpeg
+preview-*.jpg

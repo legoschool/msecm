@@ -1,0 +1,832 @@
+/* ============================================================
+   MSECM — Apple-inspired design system
+   Tokens are taken directly from design.md.
+   ============================================================ */
+
+:root {
+  /* ── Color tokens ── */
+  --action-blue:        #0066cc;
+  --focus-blue:         #0071e3;
+  --sky-link:           #2997ff;
+  --ink:                #1d1d1f;          /* near-black ink */
+  --paper:              #ffffff;
+  --parchment:          #f5f5f7;
+  --pearl:              #fafafc;
+  --tile-dark-1:        #272729;
+  --tile-dark-2:        #2a2a2c;
+  --tile-dark-3:        #252527;
+  --void:               #000000;
+
+  --ink-80:             rgba(0, 0, 0, 0.80);
+  --ink-48:             rgba(0, 0, 0, 0.48);
+  --hairline:           rgba(0, 0, 0, 0.08);
+  --divider-04:         rgba(0, 0, 0, 0.04);
+  --chip-gray:          rgba(210, 210, 215, 0.64);
+
+  /* ── The single shadow in the system (product on surface) ── */
+  --product-shadow:     rgba(0, 0, 0, 0.22) 3px 5px 30px 0;
+
+  /* ── Type stacks ──
+     SF Pro on Apple platforms via system-ui; Inter as the closest
+     open-source equivalent elsewhere; Noto Sans KR for Hangul. */
+  --font-display:
+    "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui,
+    "Inter", "Noto Sans KR", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-text:
+    "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui,
+    "Inter", "Noto Sans KR", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* ── Radii ── */
+  --r-pill:    980px;
+  --r-card:    18px;
+  --r-utility: 8px;
+  --r-pearl:   11px;
+
+  /* ── Heights ── */
+  --subnav-h:  76px;
+}
+
+/* ────────────────  Reset / base  ──────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html {
+  scroll-behavior: smooth;
+  /* ── Korean line-breaking rules ──
+     `word-break: normal` (default) splits long Hangul runs at *syllable*
+     boundaries when a line overflows, producing awkward breaks like
+     "선정되었습니|다". `keep-all` treats Hangul as words separated by
+     spaces — same rule the language already uses for ear/eye reading.
+     `overflow-wrap: break-word` keeps a safety net for legitimately
+     unbreakable strings (long URLs, no-space CJK).
+     `line-break: strict` improves punctuation handling at line ends. */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  line-break: strict;
+}
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--action-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul { list-style: none; padding: 0; margin: 0; }
+button { font: inherit; }
+
+/* Universal focus ring — Focus Blue, never decorative */
+:focus-visible {
+  outline: 2px solid var(--focus-blue);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ────────────────────  HEADER (frosted parchment)  ──────────────────── */
+.sub-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--subnav-h);
+  background: rgba(245, 245, 247, 0.80);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--hairline);
+}
+.sub-nav__inner {
+  max-width: 1024px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.sub-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  height: 60px;
+}
+.sub-nav__brand img {
+  height: 56px;        /* 단일 헤더 — 워드마크가 또렷하게 살아남는 큰 사이즈 */
+  width: auto;
+  display: block;
+}
+.sub-nav__brand:hover { text-decoration: none; opacity: 0.85; }
+.sub-nav__links {
+  display: flex;
+  gap: 24px;
+  margin-left: auto;
+}
+.sub-nav__links a {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.224px;
+}
+.sub-nav__links a:hover { text-decoration: none; opacity: 0.7; }
+
+/* ──────────────────────────  PILL CTAs  ────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-text);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.22px;
+  border-radius: var(--r-pill);
+  padding: 11px 22px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.pill:hover { text-decoration: none; }
+.pill:active { transform: scale(0.95); }   /* signature press */
+.pill--sm { font-size: 14px; padding: 8px 16px; letter-spacing: -0.224px; }
+
+.pill--primary {
+  background: var(--action-blue);
+  color: var(--paper);
+}
+.pill--primary:hover { background: #0077ed; }
+
+.pill--ghost {
+  background: transparent;
+  color: var(--action-blue);
+  border-color: var(--action-blue);
+}
+.pill--ghost:hover { background: rgba(0, 102, 204, 0.05); }
+
+.pill--ghost-on-dark {
+  background: transparent;
+  color: var(--sky-link);
+  border-color: var(--sky-link);
+}
+.pill--ghost-on-dark:hover { background: rgba(41, 151, 255, 0.10); }
+
+/* ─────────────────────────  TILES (full-bleed)  ───────────────────── */
+.tile {
+  width: 100%;
+  padding: 80px 22px;
+  /* Edge-to-edge: NO border-radius. Color change is the divider. */
+}
+.tile--hero { padding-top: 100px; padding-bottom: 64px; }
+
+.tile--light      { background: var(--paper);      color: var(--ink); }
+.tile--parchment  { background: var(--parchment);  color: var(--ink); }
+.tile--dark       { background: var(--tile-dark-1); color: var(--paper); }
+.tile--dark-2     { background: var(--tile-dark-2); color: var(--paper); }
+.tile--dark-3     { background: var(--tile-dark-3); color: var(--paper); }
+
+.tile__stack {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.tile__stack--narrow { max-width: 760px; }
+
+.tile__eyebrow {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: -0.022em;
+  color: var(--action-blue);
+  margin: 0;
+  text-transform: none;
+  max-width: 720px;
+}
+.tile__eyebrow--on-dark { color: var(--sky-link); }
+
+/* ─── Hero eyebrow: gradient + side hairlines ─────────────────────────────
+   The hero's slogan needs more presence than a regular eyebrow without
+   becoming a headline. Treatment: a multi-stop blue gradient clipped to
+   the text + thin hairline rules on both sides + weight 600 to lift it
+   off the canvas. Scoped to .tile--hero so other eyebrows stay calm. */
+.tile--hero .tile__eyebrow {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.40;
+  letter-spacing: -0.020em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+
+  /* Gradient text — Action Blue → Sky Link Blue → deep navy.
+     The gradient gives the slogan a quiet shimmer that matches the
+     blue palette of the hero illustration. */
+  background-image: linear-gradient(
+    100deg,
+    #0a3a8c 0%,
+    #0066cc 28%,
+    #2997ff 55%,
+    #0066cc 78%,
+    #0a3a8c 100%
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.tile--hero .tile__eyebrow::before,
+.tile--hero .tile__eyebrow::after {
+  content: '';
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 36px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 102, 204, 0.45) 50%,
+    rgba(0, 102, 204, 0) 100%
+  );
+}
+.tile--hero .tile__eyebrow::after {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 102, 204, 0) 0%,
+    rgba(0, 102, 204, 0.45) 50%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 640px) {
+  .tile--hero .tile__eyebrow {
+    font-size: 17px;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+  .tile--hero .tile__eyebrow::before,
+  .tile--hero .tile__eyebrow::after { width: 22px; }
+}
+
+.tile__headline {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.10;
+  letter-spacing: -0.32px;
+  margin: 0;
+}
+.tile__headline--xl {
+  font-size: 56px;
+  line-height: 1.07;
+  letter-spacing: -0.28px;
+}
+
+.tile__lede {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.30;
+  letter-spacing: 0.196px;
+  margin: 0;
+  max-width: 720px;
+  color: var(--ink);
+}
+.tile__lede--on-dark { color: rgba(255, 255, 255, 0.86); }
+
+.tile__actions {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* ──────────────────────  HERO STATS (vertical strip)  ──────────────────────
+   Stacked vertically — each row is a single oversized number with a quiet
+   label, separated by hairlines. Numbers count up on viewport entry via JS. */
+.hero-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 36px 0 12px;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 480px;
+}
+.hero-stats__item {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;     /* center the (number + label) pair */
+  gap: 16px;
+  padding: 18px 4px;
+  border-top: 1px solid var(--hairline);
+  text-align: center;
+}
+.hero-stats__item:last-child { border-bottom: 1px solid var(--hairline); }
+
+.hero-stats__value {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.0;
+  letter-spacing: -0.36px;
+  color: var(--ink);
+  margin: 0;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: baseline;
+}
+.hero-stats__num { display: inline-block; min-width: 0; }
+.hero-stats__plus {
+  color: var(--action-blue);
+  font-weight: 600;
+  margin-left: 2px;
+}
+.hero-stats__label {
+  font-family: var(--font-text);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.224px;
+  line-height: 1.30;
+  color: var(--ink-48);
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .hero-stats__value { font-size: 34px; }
+  .hero-stats__label { font-size: 13px; }
+  .hero-stats__item { padding: 14px 4px; gap: 16px; }
+}
+
+/* ──────────────────────  REVEAL ANIMATION (Apple-like)  ──────────────────────
+   Generic scroll-triggered fade + slide. Honors prefers-reduced-motion.
+   - [data-reveal]                : single element fades in
+   - [data-reveal][data-reveal-stagger] > * : children stagger in sequence
+*/
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.8s cubic-bezier(0.42, 0, 0.58, 1),
+    transform 0.8s cubic-bezier(0.42, 0, 0.58, 1);
+  will-change: opacity, transform;
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger children of a revealed container */
+[data-reveal-stagger] > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s cubic-bezier(0.42, 0, 0.58, 1),
+    transform 0.7s cubic-bezier(0.42, 0, 0.58, 1);
+}
+[data-reveal-stagger].is-visible > * { opacity: 1; transform: none; }
+[data-reveal-stagger].is-visible > *:nth-child(1) { transition-delay: 0.00s; }
+[data-reveal-stagger].is-visible > *:nth-child(2) { transition-delay: 0.10s; }
+[data-reveal-stagger].is-visible > *:nth-child(3) { transition-delay: 0.20s; }
+[data-reveal-stagger].is-visible > *:nth-child(4) { transition-delay: 0.30s; }
+[data-reveal-stagger].is-visible > *:nth-child(5) { transition-delay: 0.40s; }
+[data-reveal-stagger].is-visible > *:nth-child(6) { transition-delay: 0.50s; }
+
+/* Hero stats: when each row reveals individually it should slide in slightly
+   from the right so the count-up reads as a "ticker arriving from offstage". */
+.hero-stats__item[data-reveal] { transform: translateY(12px); }
+.hero-stats__item[data-reveal].is-visible { transform: none; }
+
+/* Reduced motion: skip everything, snap to final state */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal-stagger] > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ──────────────────────  VISION POINTS (AI 디지털 다크 타일)  ──────────────────────
+   3-row numbered list inside the dark vision tile. Numbers are oversized
+   in Sky Link Blue so they read against the near-black surface; the
+   accompanying text sits at body weight with a strong-emphasis lead. */
+.vision-points {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin: 28px auto 8px;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 720px;
+  text-align: left;
+}
+.vision-points__item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  align-items: baseline;
+  gap: 20px;
+  padding: 18px 0 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+.vision-points__num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--sky-link);
+}
+.vision-points__text {
+  font-family: var(--font-text);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
+  color: rgba(255, 255, 255, 0.86);
+}
+.vision-points__text strong {
+  color: var(--paper);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .vision-points__item { grid-template-columns: 44px 1fr; gap: 14px; padding-top: 14px; }
+  .vision-points__num { font-size: 22px; }
+  .vision-points__text { font-size: 15px; }
+}
+
+/* ──────────────────────  HERO VISUAL  ──────────────────────
+   The illustration *is* the headline — it carries the company name in
+   typography. We let it bleed into the white hero canvas with only a
+   gentle corner vignette so the artwork feels painted on the page rather
+   than dropped on top of it. */
+.hero-visual {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 1 / 1;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Light vignette only — the people and buildings near the edges should
+     still be readable, just softened where they meet the white canvas. */
+  -webkit-mask-image: radial-gradient(
+    ellipse 95% 95% at 50% 50%,
+    #000 70%,
+    rgba(0, 0, 0, 0.85) 85%,
+    rgba(0, 0, 0, 0.45) 95%,
+    transparent 100%
+  );
+          mask-image: radial-gradient(
+    ellipse 95% 95% at 50% 50%,
+    #000 70%,
+    rgba(0, 0, 0, 0.85) 85%,
+    rgba(0, 0, 0, 0.45) 95%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 480px) {
+  .hero-visual { max-width: 360px; }
+}
+
+/* Korean phrase-keeping utility.
+   Wrap a phrase that must stay on one line (e.g. "공식 선정되었습니다")
+   so the browser's word-break: keep-all rule treats it as a single token.
+   For inline use only — block elements would force their own line. */
+.nowrap { white-space: nowrap; }
+
+/* Visually-hidden text (SEO/screen-reader only).
+   Used on the hero <h1> when the headline is delivered through imagery. */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Generic product photo frame (also gets the system shadow) */
+.product-frame {
+  margin: 40px auto 0;
+  width: 100%;
+  max-width: 720px;
+}
+.product-frame--photo img {
+  width: 100%;
+  border-radius: var(--r-utility);
+  box-shadow: var(--product-shadow);
+}
+
+/* ──────────────────────────  CONTAINERS  ────────────────────────── */
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.section-head {
+  text-align: center;
+  margin: 0 auto 56px;
+  max-width: 720px;
+}
+.section-head--left { text-align: left; }
+.section-head__title {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.10;
+  letter-spacing: -0.32px;
+  margin: 0 0 12px;
+}
+.section-head__lede {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.30;
+  letter-spacing: 0.231px;
+  margin: 0;
+  color: var(--ink-80);
+}
+
+.section-foot {
+  margin-top: 56px;
+  text-align: center;
+}
+
+/* ──────────────────────────  GRIDS  ────────────────────────── */
+.grid {
+  display: grid;
+  gap: 22px;
+}
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+/* ──────────────────────  UTILITY CARD  ─────────────────────── */
+.utility-card {
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-card);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+  /* Grid items default to min-width: auto, which makes the cell expand
+     to fit the widest unbreakable child (e.g. a long .nowrap phrase).
+     Force the cell to honor its grid track instead. */
+  min-width: 0;
+}
+.utility-card:hover {
+  border-color: rgba(0, 0, 0, 0.16);
+  transform: translateY(-2px);
+}
+.utility-card__icon {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.224px;
+  width: 36px; height: 36px;
+  border-radius: var(--r-utility);
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--parchment);
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.utility-card__icon--blue { background: var(--action-blue); color: var(--paper); }
+
+.utility-card__title {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.19;
+  letter-spacing: 0.231px;
+  margin: 0;
+}
+.utility-card__text {
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
+  margin: 0;
+  color: var(--ink-80);
+}
+.utility-card__link {
+  margin-top: auto;
+  color: var(--action-blue);
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.374px;
+}
+.utility-card__link:hover { text-decoration: underline; }
+
+/* ──────────────────────  PROJECT CARD (gallery)  ─────────────────── */
+.project-card {
+  display: block;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  color: var(--ink);
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.project-card:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+  border-color: rgba(0, 0, 0, 0.16);
+}
+.project-card__media {
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  background: var(--parchment);
+  overflow: hidden;
+}
+.project-card__media img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.project-card:hover .project-card__media img { transform: scale(1.03); }
+.project-card__body {
+  padding: 20px 22px 24px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.project-card__cat {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.12px;
+  color: var(--action-blue);
+  margin: 0;
+}
+.project-card__title {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.24;
+  letter-spacing: -0.22px;
+  margin: 0;
+  color: var(--ink);
+}
+.project-card__date {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.224px;
+  color: var(--ink-48);
+  margin: 4px 0 0;
+}
+
+/* ──────────────────────  NEWS CARD (2-col)  ────────────────────── */
+.news-card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 0;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  color: var(--ink);
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.news-card:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+  border-color: rgba(0, 0, 0, 0.16);
+}
+.news-card__media { margin: 0; }
+.news-card__media img {
+  width: 100%; height: 100%; object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+.news-card__body {
+  padding: 24px 28px;
+  display: flex; flex-direction: column; gap: 6px; justify-content: center;
+}
+.news-card__cat {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.12px;
+  color: var(--action-blue);
+  margin: 0;
+}
+.news-card__title {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.24;
+  letter-spacing: -0.22px;
+  margin: 0;
+}
+.news-card__text {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.224px;
+  color: var(--ink-80);
+  margin: 4px 0 0;
+}
+
+/* ──────────────────────────  FOOTER  ────────────────────────── */
+.footer {
+  background: var(--parchment);
+  padding: 64px 22px 40px;
+  border-top: 1px solid var(--hairline);
+}
+.footer__inner { display: flex; flex-direction: column; gap: 40px; }
+.footer__cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.footer__col h4 {
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.12px;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+.footer__col ul li {
+  font-size: 12px;
+  line-height: 2.41;       /* Apple's signature relaxed leading for footer columns */
+  letter-spacing: -0.12px;
+}
+.footer__col a {
+  color: var(--ink-80);
+  font-size: 12px;
+}
+.footer__col a:hover { color: var(--ink); text-decoration: underline; }
+
+.footer__legal {
+  border-top: 1px solid var(--hairline);
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer__legal p {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -0.12px;
+  color: var(--ink-48);
+}
+.footer__fineprint { font-size: 10px; line-height: 1.30; letter-spacing: -0.08px; }
+.footer__fineprint a { color: var(--ink-48); text-decoration: underline; }
+
+/* ──────────────────────────  RESPONSIVE  ──────────────────────────
+   Breakpoints from design.md §8:
+   1440 / 1068 / 833 / 734 / 640 / 480
+*/
+@media (max-width: 1068px) {
+  .tile__headline--xl { font-size: 40px; letter-spacing: -0.30px; }
+  .grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 833px) {
+  .sub-nav__links { display: none; }
+  .tile { padding: 64px 20px; }
+  .tile__lede { font-size: 21px; line-height: 1.30; letter-spacing: 0.231px; }
+  .grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .news-card { grid-template-columns: 1fr; }
+  .news-card__media img { aspect-ratio: 16 / 9; }
+  .footer__cols { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .tile { padding: 56px 18px; }
+  .tile--hero { padding-top: 64px; }
+  .tile__headline    { font-size: 32px; letter-spacing: -0.26px; }
+  .tile__headline--xl{ font-size: 34px; line-height: 1.10; letter-spacing: -0.26px; }
+  .tile__lede        { font-size: 19px; }
+  .section-head__title { font-size: 28px; }
+  .section-head__lede  { font-size: 17px; }
+  .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
+  .tile__actions { gap: 14px; }
+  .footer__cols { grid-template-columns: 1fr 1fr; gap: 20px; }
+}
+
+@media (max-width: 480px) {
+  .tile { padding: 48px 16px; }
+  .tile__headline--xl { font-size: 28px; }
+  .pill { width: 100%; }                    /* full-width touch target */
+  .tile__actions { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; }
+}
