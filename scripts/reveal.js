@@ -31,13 +31,15 @@
     const dur = Math.min(1600, 600 + Math.log10(Math.max(10, target)) * 220);
     const start = performance.now();
     const isInt = Number.isInteger(target);
+    // data-count-comma: 6,731처럼 천 단위 쉼표를 찍는다(연도에는 붙이지 않음)
+    const fmt = (n) => ('countComma' in el.dataset ? n.toLocaleString('en-US') : n.toString());
 
     const tick = (now) => {
       const t = Math.min(1, (now - start) / dur);
       const v = easeOutCubic(t) * target;
-      el.textContent = isInt ? Math.floor(v).toString() : v.toFixed(1);
+      el.textContent = isInt ? fmt(Math.floor(v)) : v.toFixed(1);
       if (t < 1) requestAnimationFrame(tick);
-      else el.textContent = target.toString();
+      else el.textContent = fmt(target);
     };
     requestAnimationFrame(tick);
   };
@@ -48,7 +50,7 @@
       el.classList.add(REVEAL_CLASS)
     );
     document.querySelectorAll('[data-count-to]').forEach((el) => {
-      el.textContent = el.dataset.countTo;
+      el.textContent = 'countComma' in el.dataset ? Number(el.dataset.countTo).toLocaleString('en-US') : el.dataset.countTo;
     });
     return;
   }
